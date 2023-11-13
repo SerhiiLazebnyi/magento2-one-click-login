@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+use Magento\Framework\Escaper;
+use Serj\OneClickLogin\ViewModel\OneClickLogin;
+
+/** @var OneClickLogin $viewModel */
+/** @var Escaper $escaper */
+
+$viewModel = $this->getData('view_model');
+?>
+
+<?php if ($viewModel->isEnabled()) : ?>
+    <div class="block block-one-click-login">
+        <div class="block-content" aria-labelledby="block-new-customer-heading">
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <a href="<?= $escaper->escapeUrl($viewModel->getUrl()) ?>" class="action create primary"><span><?= $escaper->escapeHtml(__('One click login')) ?></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
